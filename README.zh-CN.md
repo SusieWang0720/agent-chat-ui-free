@@ -42,7 +42,7 @@ npm run dev
 
 ## Tencent Mode 配置
 
-1. 打开 [TRTC Console](https://trtc.io/console)
+1. 打开 [TRTC Console](https://console.trtc.io)
 2. 创建 Chat 应用并获取 `SDKAppID`
 3. 生成测试用 `UserSig`
 4. 将 `SDKAppID`、`UserID`、`UserSig` 填入右侧面板
@@ -90,7 +90,7 @@ TIM_BOT_NICK=Tencent RTC Chat Agent
 ## 官方链接
 
 - 产品页：[Tencent RTC Chat SDK & API 免费版](https://trtc.io/free-chat-api)
-- 控制台：[TRTC Console](https://trtc.io/console)
+- 控制台：[TRTC Console](https://console.trtc.io)
 - 功能总览：[Chat: Cross-Platform Messaging Solution](https://trtc.io/document/33515)
 - 基础概念：[Basic Concepts](https://trtc.io/document/74361)
 - 安全鉴权：[Generate UserSig](https://trtc.io/document/34385?menulabel=serverapis&product=chat)

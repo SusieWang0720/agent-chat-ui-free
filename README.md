@@ -56,7 +56,7 @@ You can use the project immediately in `mock mode` with **no Tencent setup** and
 
 ## Tencent Mode Setup
 
-1. Open the [TRTC Console](https://trtc.io/console)
+1. Open the [TRTC Console](https://console.trtc.io)
 2. Create a Chat application and get your `SDKAppID`
 3. Generate a test `UserSig`
 4. Paste `SDKAppID`, `UserID`, and `UserSig` into the right-side control panel
@@ -113,7 +113,7 @@ TIM_BOT_NICK=Tencent RTC Chat Agent
 ## Official Tencent RTC Links
 
 - Product page: [Tencent RTC Chat SDK & API free edition](https://trtc.io/free-chat-api)
-- Console: [TRTC Console](https://trtc.io/console)
+- Console: [TRTC Console](https://console.trtc.io)
 - Features overview: [Chat: Cross-Platform Messaging Solution](https://trtc.io/document/33515)
 - Basic concepts: [Basic Concepts](https://trtc.io/document/74361)
 - Secure auth: [Generate UserSig](https://trtc.io/document/34385?menulabel=serverapis&product=chat)

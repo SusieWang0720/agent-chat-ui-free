@@ -101,7 +101,7 @@ type AgentStreamEvent =
       };
     };
 
-const consoleUrl = "https://trtc.io/console";
+const consoleUrl = "https://console.trtc.io";
 const docsUrl = "https://trtc.io/document/33515";
 const userSigUrl = "https://trtc.io/document/34385?menulabel=serverapis&product=chat";
 
