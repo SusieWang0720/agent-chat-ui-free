@@ -1,4 +1,4 @@
-# Agent Chat UI
+# Async Agent Inbox
 
 [English](./README.md) | [简体中文](./README.zh-CN.md) | [日本語](./README.ja.md) | [한국어](./README.ko.md)
 
@@ -22,7 +22,7 @@ If your AI product is just a simple one-page chatbot, you probably do **not** ne
 
 According to the official [Tencent RTC Chat free edition page](https://trtc.io/free-chat-api), Tencent RTC Chat SDK & API is positioned as **1,000 MAU free forever**, with full features and built-in Push support.
 
-![Agent Chat UI screenshot](./public/screenshots/agent-chat-ui-home.png)
+![Async Agent Inbox screenshot](./public/screenshots/agent-chat-ui-home.png)
 
 ## What Can You Build With It?
 

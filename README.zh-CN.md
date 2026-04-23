@@ -1,4 +1,4 @@
-# Agent Chat UI
+# Async Agent Inbox
 
 [English](./README.md) | [简体中文](./README.zh-CN.md) | [日本語](./README.ja.md) | [한국어](./README.ko.md)
 
@@ -21,7 +21,7 @@
 
 根据官方 [Tencent RTC Chat 免费版页面](https://trtc.io/free-chat-api)，Tencent RTC Chat SDK & API 主打 **1,000 MAU 永久免费**，并包含完整功能与 Push 能力。
 
-![Agent Chat UI 截图](./public/screenshots/agent-chat-ui-home.png)
+![Async Agent Inbox 截图](./public/screenshots/agent-chat-ui-home.png)
 
 ## 它可以拿来做什么？
 
