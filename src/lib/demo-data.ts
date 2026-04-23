@@ -22,7 +22,7 @@ export const demoThreads: DemoThread[] = [
     id: "agent-inbox",
     title: "Async Agent Inbox",
     badge: "Flagship",
-    platform: "Next.js + TIMSDK",
+    platform: "Next.js + Tencent RTC Chat SDK",
     summary:
       "The missing layer between long-running agents and human users: persistent chat, delivery, and follow-up.",
     owner: "@product-bot",
@@ -74,7 +74,7 @@ export const demoMessages: Record<string, DemoMessage[]> = {
       createdAt: "09:16",
       status: "local",
       content:
-        "Design a TIMSDK-first agent chat UI that feels closer to Hermes Web UI than a docs demo.",
+        "Design an agent chat UI built on Tencent RTC Chat SDK that feels closer to a product than a docs demo.",
     },
     {
       id: "ai-2",
@@ -125,5 +125,5 @@ export const demoMessages: Record<string, DemoMessage[]> = {
 export const starterPrompts = [
   "Plan the best repo README for this project.",
   "Explain why async agent delivery matters more than one-shot chat.",
-  "Map this UI to the Tencent Chat setup flow.",
+  "Map this UI to the Tencent RTC Chat SDK setup flow.",
 ];

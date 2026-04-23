@@ -1,66 +1,37 @@
-# TIMSDK Agent Chat UI
+# Agent Chat UI
 
-An inbox-first `agent-chat-ui` built on `TIMSDK`, designed to feel closer to the hottest GitHub agent dashboards than a docs demo.
+[English](./README.md) | [简体中文](./README.zh-CN.md) | [日本語](./README.ja.md) | [한국어](./README.ko.md)
 
-It borrows the best patterns showing up in fast-growing repos right now:
+Open-source `agent-chat-ui` built with **Tencent RTC Chat SDK**.
 
-- [hermes-web-ui](https://github.com/EKKOLearnAI/hermes-web-ui): strong product framing, clean dashboard UX, tiny quickstart
-- [DreamServer](https://github.com/Light-Heart-Labs/DreamServer): one-command bootstrap, "works fast" positioning, polished first-run story
-- [scarf](https://github.com/awizemann/scarf): persistent sessions, rich chat surface, control-plane mindset
+It ships with two paths:
 
-The difference is the moat: this project is not just an agent shell. The durable layer is Tencent Chat via `TIMSDK`.
+- `Mock mode` for instant local demos
+- `Tencent mode` for real `SDKAppID` + `UserSig` login, live conversation history, and bot relay
 
-## Why this project exists
+If you want a GitHub-friendly agent inbox demo with a **free-forever path** to real chat infrastructure, this repo is designed for that.
 
-Most agent demos still behave like prompt boxes. Real users do something messier:
+According to the official [Tencent RTC Chat free edition page](https://trtc.io/free-chat-api), Tencent RTC Chat SDK & API is positioned as **1,000 MAU free forever**, with full features and built-in Push support.
 
-1. Start a task
-2. Leave the tab
-3. Come back later
-4. Expect the result, history, and context to still be there
+## What This Project Demonstrates
 
-That is where chat infrastructure matters.
+- An inbox-style agent UI instead of a plain prompt box
+- A fast first-run experience inspired by popular GitHub chat UI projects
+- A clean path from local demo to real Tencent RTC Chat SDK integration
+- Real `SDKAppID` / `UserID` / `UserSig` flow for builders who want to go beyond mock data
 
-This repo turns `TIMSDK` into the missing delivery layer for agent products:
+## Why This Repo Exists
 
-- persistent conversations
-- real login and identity
-- message history and unread state
-- bot relay through Tencent Chat
-- a path from mock demo to production setup
+Many AI demos stop at "send a prompt, get a reply."
 
-## Two modes
+Real products need a stronger loop:
 
-### Mock mode
+1. The user starts a task
+2. The agent takes time to work
+3. The user leaves the tab
+4. The result should still land in a real conversation thread later
 
-The repo is immediately demoable.
-
-- no cloud setup required
-- seeded threads and starter prompts
-- streamed local agent replies
-- ideal for GitHub discovery, screenshots, and stars
-
-### Tencent mode
-
-The serious builder path.
-
-- connect with `SDKAppID`, `UserID`, and `UserSig`
-- log in through `TIMSDK`
-- load live C2C conversation history
-- mirror assistant replies back into Tencent Chat through a server route
-
-This is the conversion mechanism: if a builder wants the real experience, they must create their own Tencent Chat app.
-
-## Architecture
-
-```text
-Browser UI (Next.js)
-  -> TIMSDK Web client
-  -> /api/usersig for dev/demo signing
-  -> /api/agent for streamed local or OpenAI-backed replies
-  -> /api/bootstrap for relay capability discovery
-  -> TIM REST relay for bot delivery
-```
+That is where Tencent RTC Chat SDK fits: identity, conversation history, unread state, message delivery, and follow-up.
 
 ## Quickstart
 
@@ -72,52 +43,72 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000).
 
-You can use the app with zero Tencent setup in mock mode.
+You can use the project immediately in `mock mode` with **no Tencent setup** and **no model API key**.
 
-## Tencent mode setup
+## Tencent Mode Setup
 
-1. Create a Chat application in the [Tencent RTC / Chat console](https://console.tencentcloud.com/trtc)
-2. Get your `SDKAppID`
+1. Open the [TRTC Console](https://trtc.io/console)
+2. Create a Chat application and get your `SDKAppID`
 3. Generate a test `UserSig`
-4. Paste them into the control panel on the right
-5. Connect and switch the flagship thread into live TIM mode
+4. Paste `SDKAppID`, `UserID`, and `UserSig` into the right-side control panel
+5. Connect and switch the flagship thread into live Tencent RTC Chat SDK mode
 
-Official docs:
+## Is `OPENAI_API_KEY` Required?
 
-- [Tencent Chat overview](https://trtc.io/document/chat-overview)
-- [Generate UserSig securely](https://trtc.io/document/34385?menulabel=serverapis&product=chat)
+No.
 
-## Environment variables
+`OPENAI_API_KEY` is **optional**.
 
-Only `OPENAI_API_KEY` is optional for better local copy generation. Everything else is optional until you want real Tencent relay.
+This demo works in three ways:
+
+1. **No model key at all**
+   The app still runs in mock mode with local seeded data and fallback agent replies.
+
+2. **Any OpenAI-compatible model endpoint**
+   The server route in [src/app/api/agent/route.ts](./src/app/api/agent/route.ts) uses an OpenAI-compatible Chat Completions interface.
+   If your model provider exposes an OpenAI-compatible endpoint, set:
+
+   - `OPENAI_API_KEY`
+   - `OPENAI_BASE_URL`
+   - `OPENAI_MODEL`
+
+3. **Any other model provider**
+   If your provider is not OpenAI-compatible, replace the logic in [src/app/api/agent/route.ts](./src/app/api/agent/route.ts) with that provider's SDK or API client.
+
+So the env var name stays `OPENAI_API_KEY` for compatibility with the current server implementation, but **you are not locked to OpenAI**.
+
+## Environment Variables
 
 ```bash
-# Optional: better agent copy
+# Optional: any OpenAI-compatible model endpoint
 OPENAI_API_KEY=
 OPENAI_MODEL=gpt-4.1-mini
 OPENAI_BASE_URL=
 
-# Optional: server-issued UserSig + robot relay
+# Optional: enable server-side UserSig issuing and bot relay for Tencent mode
 TIM_SDK_APP_ID=
 TIM_SDK_SECRET_KEY=
 TIM_ADMIN_USER_ID=
 TIM_API_BASE=https://adminapisgp.im.qcloud.com
 TIM_BOT_USER_ID=@RBT#agent_inbox
-TIM_BOT_NICK=TIMSDK Agent
+TIM_BOT_NICK=Tencent RTC Chat Agent
 ```
 
-## Production note
+## Official Tencent RTC Links
 
-Do not ship `TIM_SDK_SECRET_KEY` to the client.
+- Product page: [Tencent RTC Chat SDK & API free edition](https://trtc.io/free-chat-api)
+- Console: [TRTC Console](https://trtc.io/console)
+- Features overview: [Chat: Cross-Platform Messaging Solution](https://trtc.io/document/33515)
+- Basic concepts: [Basic Concepts](https://trtc.io/document/74361)
+- Secure auth: [Generate UserSig](https://trtc.io/document/34385?menulabel=serverapis&product=chat)
+- Web client APIs: [TencentCloudChat SDK Documentation](https://trtc.io/document/52488)
+- Login flow: [Chat SDK Login and Logout](https://trtc.io/document/47970)
 
-This repo includes a server route only to make onboarding easier. In production, move `UserSig` issuance behind your own auth boundary and treat the current route as scaffolding.
+## Production Note
 
-## What makes this GitHub-worthy
+Do **not** ship `TIM_SDK_SECRET_KEY` to the client.
 
-- product-like hero and layout instead of SDK-demo framing
-- instant mock mode for first-run delight
-- Tencent mode that proves real chat infrastructure, not fake local state
-- explicit conversion path into Tencent Chat free usage
+This repo includes a server route only to make onboarding easier. In production, move `UserSig` issuance behind your own auth boundary and treat the current route as starter scaffolding.
 
 ## Scripts
 

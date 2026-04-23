@@ -101,8 +101,8 @@ type AgentStreamEvent =
       };
     };
 
-const consoleUrl = "https://console.tencentcloud.com/trtc";
-const docsUrl = "https://trtc.io/document/chat-overview";
+const consoleUrl = "https://trtc.io/console";
+const docsUrl = "https://trtc.io/document/33515";
 const userSigUrl = "https://trtc.io/document/34385?menulabel=serverapis&product=chat";
 
 const researchPatterns = [
@@ -171,7 +171,7 @@ function initialRuns(): RunRow[] {
   return [
     {
       id: "run-1",
-      title: "TIMSDK relay health",
+      title: "Tencent RTC Chat relay health",
       detail: "Waiting for Tencent mode to be enabled.",
       state: "queued",
     },
@@ -269,7 +269,7 @@ export function AgentChatUi() {
           ? {
               ...thread,
               unread: 0,
-              summary: "Live TIMSDK conversation loaded from Tencent Chat.",
+              summary: "Live Tencent RTC Chat conversation loaded from the cloud.",
               owner: credentials.agentUserId || thread.owner,
             }
           : thread,
@@ -413,7 +413,7 @@ export function AgentChatUi() {
         ...current,
         status: "connected",
         mode: "tencent",
-        message: "Connected to Tencent Chat. Local UI is now backed by a real TIM session.",
+        message: "Connected to Tencent RTC Chat. Local UI is now backed by a real chat session.",
       }));
     };
 
@@ -422,7 +422,7 @@ export function AgentChatUi() {
         ...current,
         status: "idle",
         mode: "tencent",
-        message: "Tencent Chat is temporarily not ready.",
+        message: "Tencent RTC Chat is temporarily not ready.",
       }));
     };
 
@@ -434,7 +434,7 @@ export function AgentChatUi() {
         message:
           event?.data?.message ||
           event?.message ||
-          "Tencent Chat reported an error. Check SDKAppID and UserSig.",
+          "Tencent RTC Chat reported an error. Check SDKAppID and UserSig.",
       }));
     };
 
@@ -469,7 +469,7 @@ export function AgentChatUi() {
       });
     } catch {
       updateRun(
-        "TIMSDK history load",
+        "Tencent RTC Chat history load",
         "No remote messages were loaded yet, so the demo thread stayed in seeded mode.",
         "warning",
       );
@@ -491,9 +491,13 @@ export function AgentChatUi() {
       ...current,
       status: "connecting",
       mode: "tencent",
-      message: "Logging in to Tencent Chat and preparing the bot relay.",
+      message: "Logging in to Tencent RTC Chat and preparing the bot relay.",
     }));
-    updateRun("TIMSDK login", "Authenticating with SDKAppID and UserSig.", "running");
+    updateRun(
+      "Tencent RTC Chat login",
+      "Authenticating with SDKAppID and UserSig.",
+      "running",
+    );
 
     try {
       let userSig = credentials.userSig.trim();
@@ -550,8 +554,8 @@ export function AgentChatUi() {
       await loadAgentInboxHistory();
 
       updateRun(
-        "TIMSDK relay health",
-        "Connected. The flagship thread is now backed by a real Tencent Chat login.",
+        "Tencent RTC Chat relay health",
+        "Connected. The flagship thread is now backed by a real Tencent RTC Chat login.",
         "done",
       );
     } catch (error) {
@@ -562,11 +566,11 @@ export function AgentChatUi() {
         message:
           error instanceof Error
             ? error.message
-            : "Tencent Chat login failed for an unknown reason.",
+            : "Tencent RTC Chat login failed for an unknown reason.",
       }));
 
       updateRun(
-        "TIMSDK login",
+        "Tencent RTC Chat login",
         error instanceof Error ? error.message : "Login failed.",
         "warning",
       );
@@ -592,9 +596,9 @@ export function AgentChatUi() {
       ...current,
       status: "idle",
       mode: "mock",
-      message: "Disconnected from Tencent Chat. Local preview mode is still available.",
+      message: "Disconnected from Tencent RTC Chat. Local preview mode is still available.",
     }));
-    updateRun("TIMSDK session", "Returned to mock mode.", "queued");
+    updateRun("Tencent RTC Chat session", "Returned to mock mode.", "queued");
   };
 
   const appendPreviewMessage = (threadId: string, message: UiMessage) => {
@@ -706,7 +710,7 @@ export function AgentChatUi() {
           updateRun(
             "Agent planner",
             event.relay?.enabled
-              ? "Finished locally and mirrored to Tencent Chat."
+              ? "Finished locally and mirrored to Tencent RTC Chat."
               : "Finished locally in preview mode.",
             "done",
           );
@@ -757,7 +761,11 @@ export function AgentChatUi() {
         });
 
         await clientRef.current.sendMessage(message);
-        updateRun("TIMSDK send", "User message sent to the bot conversation.", "done");
+        updateRun(
+          "Tencent RTC Chat send",
+          "User message sent to the bot conversation.",
+          "done",
+        );
       } catch (error) {
         setMessagesByThread((current) => ({
           ...current,
@@ -766,7 +774,7 @@ export function AgentChatUi() {
           ),
         }));
         updateRun(
-          "TIMSDK send",
+          "Tencent RTC Chat send",
           error instanceof Error ? error.message : "Failed to send the TIM message.",
           "warning",
         );
@@ -798,13 +806,13 @@ export function AgentChatUi() {
     },
     {
       icon: RadioTower,
-      label: "TIMSDK core",
-      value: "Real login, history, unread, relay-ready bot channel",
+      label: "Tencent RTC Chat SDK",
+      value: "Real login, history, unread state, and relay-ready bot channel",
     },
     {
       icon: BellRing,
-      label: "Launch path",
-      value: "Mock mode for stars, Tencent mode for conversion",
+      label: "Free forever path",
+      value: "Mock mode for demos, Tencent mode for the official free edition",
     },
   ];
 
@@ -816,17 +824,18 @@ export function AgentChatUi() {
             <div className="max-w-3xl">
               <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-emerald-200 bg-emerald-50 px-3 py-1 text-xs font-semibold uppercase tracking-[0.24em] text-emerald-800">
                 <Sparkles className="h-3.5 w-3.5" />
-                TIMSDK Agent Chat UI
+                Agent Chat UI for Tencent RTC Chat SDK
               </div>
               <h1 className="max-w-4xl font-[family-name:var(--font-space-grotesk)] text-4xl font-semibold leading-[1.03] tracking-tight text-slate-950 sm:text-5xl xl:text-6xl">
-                Build the agent inbox people actually want to star, then make them
-                wire their own Tencent Chat app to keep it.
+                Build the agent chat UI people actually want to star, then connect it
+                to Tencent RTC Chat SDK when you need real delivery.
               </h1>
               <p className="mt-5 max-w-3xl text-base leading-7 text-slate-600 sm:text-lg">
                 This project is designed around what the hottest GitHub agent UIs do
                 well right now: sharp promise, fast bootstrap, strong async delivery,
                 and a UI that feels like a product instead of a sample app. The twist
-                is that the durable layer is TIMSDK.
+                is that the durable layer is Tencent RTC Chat SDK. The official free
+                edition page positions it as 1,000 MAU free forever with Push support.
               </p>
               <div className="mt-6 flex flex-wrap gap-3">
                 <a
@@ -844,7 +853,7 @@ export function AgentChatUi() {
                   target="_blank"
                   rel="noreferrer"
                 >
-                  Read TIMSDK Docs
+                  Read Tencent RTC Chat Docs
                   <Link2 className="h-4 w-4" />
                 </a>
               </div>
@@ -1059,7 +1068,7 @@ export function AgentChatUi() {
                   <textarea
                     value={composer}
                     onChange={(event) => setComposer(event.target.value)}
-                    placeholder="Ask for a README, a product angle, a setup flow, or a TIMSDK integration move."
+                    placeholder="Ask for a README, a product angle, a setup flow, or a Tencent RTC Chat SDK integration move."
                     rows={3}
                     className="min-h-[88px] w-full resize-none bg-transparent text-sm leading-7 outline-none placeholder:text-slate-400"
                   />
@@ -1167,7 +1176,7 @@ export function AgentChatUi() {
                       sdkAppId: event.target.value,
                     }))
                   }
-                  placeholder="From the Tencent Chat console"
+                  placeholder="From the TRTC Console"
                   className="h-12 w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 text-sm outline-none transition focus:border-emerald-300 focus:bg-white"
                 />
               </label>
@@ -1253,7 +1262,7 @@ export function AgentChatUi() {
               <div className="text-sm font-semibold text-slate-900">Why this flow converts</div>
               <ul className="mt-3 space-y-3 text-sm leading-6 text-slate-600">
                 <li>1. Mock mode lets the repo feel alive before any cloud setup.</li>
-                <li>2. Tencent mode forces the serious builder to create a Chat app.</li>
+                <li>2. Tencent mode gives serious builders a free-forever path into Tencent RTC Chat SDK.</li>
                 <li>3. Production still requires server-side UserSig issuing and bot relay.</li>
               </ul>
             </div>
@@ -1267,7 +1276,7 @@ export function AgentChatUi() {
                   target="_blank"
                   rel="noreferrer"
                 >
-                  Open Tencent Console
+                  Open TRTC Console
                   <ChevronRight className="h-4 w-4" />
                 </a>
                 <a

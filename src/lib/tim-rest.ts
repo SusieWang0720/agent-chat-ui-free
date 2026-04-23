@@ -28,7 +28,7 @@ type TimApiResponse = {
 
 const DEFAULT_TIM_API_BASE = "https://adminapisgp.im.qcloud.com";
 const DEFAULT_BOT_USER_ID = "@RBT#agent_inbox";
-const DEFAULT_BOT_NICK = "TIMSDK Agent";
+const DEFAULT_BOT_NICK = "Tencent RTC Chat Agent";
 const USER_SIG_EXPIRE_SECONDS = 60 * 60 * 24 * 180;
 
 export function getTimServerConfig(): TimServerConfig | null {

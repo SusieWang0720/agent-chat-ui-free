@@ -14,13 +14,14 @@ const ibmPlexMono = IBM_Plex_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "TIMSDK Agent Chat UI",
+  title: "Agent Chat UI for Tencent RTC Chat SDK",
   description:
-    "A GitHub-ready agent inbox built on TIMSDK: mock mode for instant demos, Tencent mode for real chat delivery, history, and bot relay.",
+    "Open-source agent chat UI built with Tencent RTC Chat SDK. Mock mode, real chat history, bot relay, and a free-forever path to production.",
   keywords: [
-    "TIMSDK",
     "agent chat ui",
-    "Tencent Chat",
+    "ai chat ui",
+    "Tencent RTC Chat SDK",
+    "free chat api",
     "Next.js chat example",
     "AI inbox",
     "chat sdk",

@@ -35,11 +35,11 @@ function fallbackReply(prompt: string, threadTitle: string) {
   const normalized = prompt.toLowerCase();
 
   if (normalized.includes("readme")) {
-    return `Here is the angle I would push for ${threadTitle}: lead with "Agent inbox for async AI delivery", show the TIMSDK requirement in the first setup block, and keep the first demo under two minutes. Then prove three things fast: persistent conversation history, progress updates that survive page reloads, and the handoff from mock mode to real Tencent Chat credentials.`;
+    return `Here is the angle I would push for ${threadTitle}: lead with "Agent inbox for async AI delivery", make Tencent RTC Chat SDK visible in the first setup block, and keep the first demo under two minutes. Then prove three things fast: persistent conversation history, progress updates that survive page reloads, and the handoff from mock mode to real Tencent RTC Chat credentials.`;
   }
 
   if (normalized.includes("push") || normalized.includes("notification")) {
-    return `Push matters because the user is rarely sitting on the chat tab waiting for an agent to finish. A strong agent UI should treat push as part of the product loop: start task, leave, get woken up, reopen the exact thread, and continue from preserved context. TIMSDK plus Chat push is a better story than bolting alerts onto a generic prompt box later.`;
+    return `Push matters because the user is rarely sitting on the chat tab waiting for an agent to finish. A strong agent UI should treat push as part of the product loop: start task, leave, get woken up, reopen the exact thread, and continue from preserved context. Tencent RTC Chat SDK plus Push is a better story than bolting alerts onto a generic prompt box later.`;
   }
 
   if (
@@ -47,10 +47,19 @@ function fallbackReply(prompt: string, threadTitle: string) {
     normalized.includes("sdkappid") ||
     normalized.includes("secret")
   ) {
-    return `The clean flow is: create a Chat app in the console, get SDKAppID, generate a test UserSig for local use, then move UserSig issuance behind a server route for production. That way the GitHub demo stays easy, but serious users still have to wire their own Tencent Chat project to unlock the full experience.`;
+    return `The clean flow is: create a Chat app in the TRTC Console, get SDKAppID, generate a test UserSig for local use, then move UserSig issuance behind a server route for production. That way the GitHub demo stays easy, but serious users still have to wire their own Tencent RTC Chat project to unlock the full experience.`;
   }
 
-  return `The strongest version of this project is not "an AI chat demo with TIMSDK attached." It is "an agent inbox built on TIMSDK." The UI should prove that long-running work, delivery, memory, and follow-up belong in chat. Use mock mode to remove friction, then make Tencent mode feel like the grown-up path: real credentials, real bot relay, and real message continuity.`;
+  if (
+    normalized.includes("openai") ||
+    normalized.includes("deepseek") ||
+    normalized.includes("claude") ||
+    normalized.includes("model")
+  ) {
+    return `OPENAI_API_KEY is optional in this demo. The current server route uses an OpenAI-compatible API surface for convenience, so any provider with an OpenAI-compatible endpoint can work by setting OPENAI_API_KEY, OPENAI_BASE_URL, and OPENAI_MODEL. If your model provider is not OpenAI-compatible, swap the logic in /api/agent for that provider's SDK.`;
+  }
+
+  return `The strongest version of this project is not "an AI chat demo with a random chat SDK attached." It is "an agent inbox built on Tencent RTC Chat SDK." The UI should prove that long-running work, delivery, memory, and follow-up belong in chat. Use mock mode to remove friction, then make Tencent mode feel like the grown-up path: real credentials, real bot relay, and real message continuity.`;
 }
 
 async function createModelReply(
@@ -76,7 +85,7 @@ async function createModelReply(
       {
         role: "system",
         content:
-          "You are a product-minded engineering assistant designing a GitHub-ready TIMSDK agent inbox. Be concrete, opinionated, and concise. Favor architecture, growth leverage, and onboarding clarity over generic AI commentary.",
+          "You are a product-minded engineering assistant designing a GitHub-ready agent inbox built with Tencent RTC Chat SDK. Be concrete, opinionated, and concise. Favor architecture, growth leverage, and onboarding clarity over generic AI commentary.",
       },
       ...history.slice(-4).map((item) => ({
         role: item.role,
@@ -136,7 +145,7 @@ export async function POST(request: Request) {
         if (relayResult.enabled) {
           push({
             type: "status",
-            value: `Synced to Tencent Chat as ${relayResult.botUserId}`,
+            value: `Synced to Tencent RTC Chat as ${relayResult.botUserId}`,
           });
         }
       }
