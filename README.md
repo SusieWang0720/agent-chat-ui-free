@@ -38,6 +38,24 @@ According to the official [Tencent RTC Chat free edition page](https://trtc.io/f
 - Not an agent framework like LangGraph or OpenAI Agents
 - Not only a Tencent SDK sample with no product UX
 
+## Without vs With Tencent RTC Chat SDK
+
+If you only need a simple AI chat page, you can build it without Tencent RTC Chat SDK.
+
+**Without Tencent RTC Chat SDK**
+
+- Good for a basic prompt-and-response page
+- You can store messages in your own database
+- Best when you only need one web app, one user session, and simple history
+
+**With Tencent RTC Chat SDK**
+
+- Better when your AI product should behave like a real messaging product
+- Real conversation threads, history sync, unread state, and revisit-friendly delivery
+- A cleaner path to multi-device continuity, bot relay, notifications, and human handoff
+
+Use this repo when you want more than "AI can reply." Use it when you want "AI replies inside a durable inbox."
+
 ## What You Get In 5 Minutes
 
 - An inbox-style agent UI instead of a plain prompt box

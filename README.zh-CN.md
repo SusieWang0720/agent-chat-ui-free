@@ -37,6 +37,24 @@
 - 不是 LangGraph / OpenAI Agents 这类 agent framework
 - 也不是只有 SDK 接入、没有产品体验的示例页
 
+## 不用和用了 Tencent RTC Chat SDK，有什么区别
+
+如果你只需要一个简单的 AI 聊天页面，其实不用 Tencent RTC Chat SDK 也能做。
+
+**不用 Tencent RTC Chat SDK**
+
+- 适合基础的问答式页面
+- 你完全可以把消息存进自己的数据库
+- 更适合单 Web 应用、单用户会话、简单历史记录
+
+**用了 Tencent RTC Chat SDK**
+
+- 更适合把 AI 产品做成一个真正的消息产品
+- 真实会话线程、历史同步、未读状态、再次访问时的结果承接
+- 后续更容易扩展到多端连续性、bot relay、通知、人工接管
+
+如果你要的只是“AI 能回答”，不用它也行。这个项目真正适合的是“AI 在一个持久 inbox 里回答”。
+
 ## 这个项目展示什么
 
 - 不是普通 prompt box，而是 inbox 风格的 agent UI

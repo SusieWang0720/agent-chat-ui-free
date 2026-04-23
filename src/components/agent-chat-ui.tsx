@@ -838,6 +838,11 @@ export function AgentChatUi() {
                 official free edition page positions it as 1,000 MAU free forever
                 with Push support.
               </p>
+              <p className="mt-3 max-w-3xl text-sm leading-6 text-slate-500 sm:text-base">
+                If you only need a simple AI chat page, you can build it without
+                Tencent RTC Chat SDK. Use this project when you want real threads,
+                history, unread state, and a messaging-style inbox experience.
+              </p>
               <div className="mt-6 flex flex-wrap gap-3">
                 <a
                   className="inline-flex items-center gap-2 rounded-full bg-slate-950 px-5 py-3 text-sm font-semibold text-white transition hover:bg-slate-800"
