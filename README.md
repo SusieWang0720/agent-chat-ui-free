@@ -13,6 +13,8 @@ Use this repo when your AI product is not just a prompt box. It is for agents th
 
 Tencent RTC Chat SDK is the delivery layer: real message history, unread state, follow-up, and bot relay.
 
+Bring your own LLM or agent backend. This repo does **not** replace your AI API. It gives your AI product a real inbox and delivery layer.
+
 This repo is designed to feel like the GitHub projects people actually star:
 
 - a real UI, not a blank sample page
@@ -42,6 +44,17 @@ According to the official [Tencent RTC Chat free edition page](https://trtc.io/f
 - A fast first-run experience inspired by popular GitHub chat UI projects
 - A clean path from local demo to real Tencent RTC Chat SDK integration
 - Real `SDKAppID` / `UserID` / `UserSig` flow for builders who want to go beyond mock data
+
+## Concrete Scenario
+
+Imagine you are building an AI support agent for an ecommerce app.
+
+1. A user asks: `Why is my order delayed, and can you draft a reply for the customer?`
+2. Your backend agent checks order data, shipment status, and internal knowledge. This may take 30-90 seconds.
+3. The user leaves the page before the work finishes.
+4. The result still comes back into a real conversation thread with history, unread state, and follow-up.
+
+Without this project, you usually have to build that delivery experience yourself. With this repo, you can focus on the agent backend and use Tencent RTC Chat SDK for the persistent inbox layer.
 
 ## Why This Repo Exists
 

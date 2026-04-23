@@ -833,9 +833,10 @@ export function AgentChatUi() {
               <p className="mt-5 max-w-3xl text-base leading-7 text-slate-600 sm:text-lg">
                 Use this starter when your AI product is more than a prompt box. It is
                 designed for agents that take time to work and still need to deliver
-                results after the user leaves the page. Tencent RTC Chat SDK provides
-                the durable layer, and the official free edition page positions it as
-                1,000 MAU free forever with Push support.
+                results after the user leaves the page. Bring your own LLM or agent
+                backend. Tencent RTC Chat SDK provides the durable layer, and the
+                official free edition page positions it as 1,000 MAU free forever
+                with Push support.
               </p>
               <div className="mt-6 flex flex-wrap gap-3">
                 <a
