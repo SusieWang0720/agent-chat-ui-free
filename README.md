@@ -5,93 +5,98 @@
 [![Next.js](https://img.shields.io/badge/Next.js-16-black)](https://nextjs.org/)
 [![Tencent RTC Chat SDK](https://img.shields.io/badge/Tencent%20RTC%20Chat%20SDK-Integrated-0ea56b)](https://trtc.io/free-chat-api)
 [![Free Forever](https://img.shields.io/badge/Free%20Edition-1%2C000%20MAU%20Free%20Forever-1f6feb)](https://trtc.io/free-chat-api)
-[![OpenAI Compatible](https://img.shields.io/badge/Model%20Layer-OpenAI%20Compatible-7c3aed)](#is-openai_api_key-required)
+[![OpenAI Compatible](https://img.shields.io/badge/Model%20Layer-OpenAI%20Compatible-7c3aed)](#do-i-need-openai_api_key)
 
-**The open-source async agent inbox for Next.js.**
+**Build an inbox for AI agents that do not finish instantly.**
 
-Use this repo when your AI product is not just a prompt box. It is for agents that take time to work, need persistent threads, and should still deliver results after the user leaves the page.
+This project is a **Next.js starter for AI products that need real conversation threads**.
 
-Tencent RTC Chat SDK is the delivery layer: real message history, unread state, follow-up, and bot relay.
+Bring your own LLM or agent backend. This repo does **not** replace your AI API. It gives you the missing product layer around it:
 
-Bring your own LLM or agent backend. This repo does **not** replace your AI API. It gives your AI product a real inbox and delivery layer.
+- an inbox-style UI instead of a plain prompt box
+- real thread history
+- unread state and revisit-friendly delivery
+- a path from local demo to Tencent RTC Chat SDK integration
 
-This repo is designed to feel like the GitHub projects people actually star:
-
-- a real UI, not a blank sample page
-- a 3-minute `mock mode` path with no cloud setup
-- a deeper `Tencent mode` path with real `SDKAppID` + `UserSig`
-- a **free-forever path** into production chat infrastructure
+If your AI product is just a simple one-page chatbot, you probably do **not** need this project. If your agent runs longer tasks and should feel like a real messaging product, this is what it is for.
 
 According to the official [Tencent RTC Chat free edition page](https://trtc.io/free-chat-api), Tencent RTC Chat SDK & API is positioned as **1,000 MAU free forever**, with full features and built-in Push support.
 
 ![Agent Chat UI screenshot](./public/screenshots/agent-chat-ui-home.png)
 
-## What This Repo Is
+## What Can You Build With It?
 
-- An inbox-style frontend for long-running AI tasks
-- A Next.js starter for products that need async delivery, thread history, and revisit-friendly UX
-- A Tencent RTC Chat SDK integration demo once you switch from `mock mode` to `Tencent mode`
+- An AI support inbox that keeps customer conversations in one persistent thread
+- An operations copilot that posts results back after checking logs, tickets, or dashboards
+- An internal workflow agent that finishes work later and returns the result to the same conversation
 
-## What This Repo Is Not
+## Why People Would Use This
 
-- Not a generic multi-model chat playground
-- Not an agent framework like LangGraph or OpenAI Agents
-- Not only a Tencent SDK sample with no product UX
+Most AI demos stop at:
 
-## Without vs With Tencent RTC Chat SDK
+1. user sends a prompt
+2. AI replies on the same page
+3. everything is managed as temporary app state
 
-If you only need a simple AI chat page, you can build it without Tencent RTC Chat SDK.
+That is fine for a demo.
 
-**Without Tencent RTC Chat SDK**
+Real products usually need more:
 
-- Good for a basic prompt-and-response page
-- You can store messages in your own database
-- Best when you only need one web app, one user session, and simple history
+- message history that survives refreshes and revisits
+- a thread users can continue later
+- unread state instead of "hope the user was still on the page"
+- a cleaner path to bot relay, notifications, and human handoff
 
-**With Tencent RTC Chat SDK**
+This repo helps you move from **"AI can answer"** to **"AI replies inside a durable inbox."**
 
-- Better when your AI product should behave like a real messaging product
-- Real conversation threads, history sync, unread state, and revisit-friendly delivery
-- A cleaner path to multi-device continuity, bot relay, notifications, and human handoff
+## What This Repo Includes
 
-Use this repo when you want more than "AI can reply." Use it when you want "AI replies inside a durable inbox."
+- `Mock mode`
+  Run the UI immediately with seeded threads and fallback agent replies.
 
-## What You Get In 5 Minutes
+- `Tencent mode`
+  Connect a real `SDKAppID`, `UserID`, and `UserSig` to load history and use Tencent RTC Chat SDK as the delivery layer.
 
-- An inbox-style agent UI instead of a plain prompt box
-- A fast first-run experience inspired by popular GitHub chat UI projects
-- A clean path from local demo to real Tencent RTC Chat SDK integration
-- Real `SDKAppID` / `UserID` / `UserSig` flow for builders who want to go beyond mock data
+- `Agent route starter`
+  A server route that works with OpenAI-compatible APIs today and can be replaced with your own provider or agent backend.
 
 ## Concrete Scenario
 
-Imagine you are building an AI support agent for an ecommerce app.
+Imagine you are building an AI support assistant for an ecommerce app.
 
 1. A user asks: `Why is my order delayed, and can you draft a reply for the customer?`
-2. Your backend agent checks order data, shipment status, and internal knowledge. This may take 30-90 seconds.
-3. The user leaves the page before the work finishes.
-4. The result still comes back into a real conversation thread with history, unread state, and follow-up.
+2. Your backend agent checks order data, shipment status, and internal knowledge.
+3. That work may take 30-90 seconds.
+4. The result should still land in the same conversation thread, not disappear into page-local state.
 
-Without this project, you usually have to build that delivery experience yourself. With this repo, you can focus on the agent backend and use Tencent RTC Chat SDK for the persistent inbox layer.
+That is the kind of product this repo is designed for.
 
-## Why This Repo Exists
+## When You Do Not Need Tencent RTC Chat SDK
 
-Many AI demos stop at "send a prompt, get a reply."
+You can skip Tencent RTC Chat SDK if all you need is:
 
-Real products need a stronger loop:
+- a simple AI chat page
+- one web app
+- one active session
+- chat history stored in your own database
 
-1. The user starts a task
-2. The agent takes time to work
-3. The user leaves the tab
-4. The result should still land in a real conversation thread later
+That setup is completely valid.
 
-That is where Tencent RTC Chat SDK fits: identity, conversation history, unread state, message delivery, and follow-up.
+## When Tencent RTC Chat SDK Becomes Useful
 
-## Best Fit
+Tencent RTC Chat SDK is helpful when you want your AI product to behave more like a real messaging product:
 
-- AI copilots that finish work asynchronously
-- Support or operations agents that need real threads instead of temporary chat state
-- Agent products that need a cleaner path from local demo to production messaging
+- persistent conversation threads
+- history sync
+- unread state
+- better revisit experience
+- a cleaner path to multi-device continuity
+- bot relay and later product expansion
+
+In short:
+
+- without it: you have an AI chat page
+- with it: you are closer to an AI messaging product
 
 ## Quickstart
 
@@ -105,7 +110,7 @@ Open [http://localhost:3000](http://localhost:3000).
 
 If port `3000` is already in use, Next.js will automatically print the new local URL in the terminal.
 
-You can use the project immediately in `mock mode` with **no Tencent setup** and **no model API key**.
+You can start in `mock mode` with **no Tencent setup** and **no model API key**.
 
 ## Tencent Mode Setup
 
@@ -113,9 +118,9 @@ You can use the project immediately in `mock mode` with **no Tencent setup** and
 2. Create a Chat application and get your `SDKAppID`
 3. Generate a test `UserSig`
 4. Paste `SDKAppID`, `UserID`, and `UserSig` into the right-side control panel
-5. Connect and switch the flagship thread into live Tencent RTC Chat SDK mode
+5. Connect and load the flagship thread in Tencent mode
 
-## Is `OPENAI_API_KEY` Required?
+## Do I Need `OPENAI_API_KEY`?
 
 No.
 
@@ -128,23 +133,16 @@ This demo works in three ways:
 
 2. **Any OpenAI-compatible model endpoint**
    The server route in [src/app/api/agent/route.ts](./src/app/api/agent/route.ts) uses an OpenAI-compatible Chat Completions interface.
-   If your model provider exposes an OpenAI-compatible endpoint, set:
+   If your provider supports that interface, set:
 
    - `OPENAI_API_KEY`
    - `OPENAI_BASE_URL`
    - `OPENAI_MODEL`
 
 3. **Any other model provider**
-   If your provider is not OpenAI-compatible, replace the logic in [src/app/api/agent/route.ts](./src/app/api/agent/route.ts) with that provider's SDK or API client.
+   Replace the logic in [src/app/api/agent/route.ts](./src/app/api/agent/route.ts) with that provider's SDK or API client.
 
-So the env var name stays `OPENAI_API_KEY` for compatibility with the current server implementation, but **you are not locked to OpenAI**.
-
-## Why Tencent RTC Chat SDK For Agent Products?
-
-- Agents are often asynchronous, so durable message delivery matters more than a pretty prompt box
-- Builders need real identity, history, unread state, and follow-up instead of a one-shot demo
-- `mock mode` makes the repo easy to star, while `Tencent mode` makes it easy to keep
-- The official free edition gives a low-friction path from GitHub demo to a real app
+So the variable name stays `OPENAI_API_KEY` for compatibility with the current implementation, but you are **not** locked to OpenAI.
 
 ## Environment Variables
 

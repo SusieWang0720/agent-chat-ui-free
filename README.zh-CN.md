@@ -6,72 +6,95 @@
 [![Tencent RTC Chat SDK](https://img.shields.io/badge/Tencent%20RTC%20Chat%20SDK-Integrated-0ea56b)](https://trtc.io/free-chat-api)
 [![Free Forever](https://img.shields.io/badge/Free%20Edition-1%2C000%20MAU%20Free%20Forever-1f6feb)](https://trtc.io/free-chat-api)
 
-**一个面向 Next.js 的开源异步 agent inbox。**
+**给“不会立刻完成任务”的 AI agent 做一个真正的 inbox。**
 
-这个项目不是普通 prompt box，而是给“需要花时间执行任务的 AI agent”准备的前端。用户离开页面后，结果仍然应该回到真实会话线程里。
+这个项目是一个 **面向 Next.js 的 AI 产品前端 starter**。  
+它不替代你的大模型或 agent 后端，它补的是另一层：
 
-**Tencent RTC Chat SDK** 在这里扮演的是交付层：真实历史消息、未读状态、后续跟进和 bot relay。
+- inbox 风格 UI，而不是普通 prompt box
+- 真实会话线程
+- 历史消息和再次访问体验
+- 从本地 demo 到 Tencent RTC Chat SDK 接入的路径
 
-你仍然需要接入自己的大模型或 agent 后端。这个项目**不替代 AI API**，它解决的是 AI 产品里的 inbox 和结果交付层。
-
-它同时提供两条路径：
-
-- `Mock mode`：零云端配置，直接体验
-- `Tencent mode`：接入真实 `SDKAppID`、`UserSig`、聊天历史和 bot relay
-
-如果你想要一个适合放在 GitHub 上、又能自然导向真实聊天基础设施的 agent inbox demo，这个项目就是按这个目标设计的。
+如果你只是做一个简单的 AI 聊天页，这个项目未必必要。  
+如果你的 agent 会执行较长任务，希望产品更像“真实消息系统”而不是“页面内问答框”，这个项目就更适合。
 
 根据官方 [Tencent RTC Chat 免费版页面](https://trtc.io/free-chat-api)，Tencent RTC Chat SDK & API 主打 **1,000 MAU 永久免费**，并包含完整功能与 Push 能力。
 
 ![Agent Chat UI 截图](./public/screenshots/agent-chat-ui-home.png)
 
-## 这个项目是什么
+## 它可以拿来做什么？
 
-- 一个面向长任务 AI 产品的 inbox 风格前端
-- 一个支持异步投递、线程历史、再次访问体验的 Next.js starter
-- 当你从 `mock mode` 切到 `Tencent mode` 后，它也是一个 Tencent RTC Chat SDK 集成 demo
+- AI 客服 inbox，把客户问题和回复都放进持续存在的会话线程
+- AI 运维助手，查日志、查工单、查监控后把结果回到同一线程
+- AI 内部办公助手，任务完成后把结果继续发回原会话
 
-## 这个项目不是什么
+## 为什么有人会用它？
 
-- 不是通用多模型聊天 playground
-- 不是 LangGraph / OpenAI Agents 这类 agent framework
-- 也不是只有 SDK 接入、没有产品体验的示例页
+很多 AI demo 只做到：
 
-## 不用和用了 Tencent RTC Chat SDK，有什么区别
+1. 用户发一句
+2. AI 回一句
+3. 一切都只是页面内的临时状态
 
-如果你只需要一个简单的 AI 聊天页面，其实不用 Tencent RTC Chat SDK 也能做。
+做 demo 可以。  
+但做产品时，通常还需要：
 
-**不用 Tencent RTC Chat SDK**
+- 刷新后还能看到历史
+- 用户回来后还能继续接着聊
+- 有未读状态，而不是假设用户一直停留在页面
+- 后续能往 bot relay、通知、人工接管扩展
 
-- 适合基础的问答式页面
-- 你完全可以把消息存进自己的数据库
-- 更适合单 Web 应用、单用户会话、简单历史记录
+这个项目的价值，不是让 “AI 能回答”，而是让 “AI 在一个持久 inbox 里回答”。
 
-**用了 Tencent RTC Chat SDK**
+## 这个项目包含什么？
 
-- 更适合把 AI 产品做成一个真正的消息产品
-- 真实会话线程、历史同步、未读状态、再次访问时的结果承接
-- 后续更容易扩展到多端连续性、bot relay、通知、人工接管
+- `Mock mode`
+  不配云端也能马上跑，带 seeded threads 和 fallback 回复。
 
-如果你要的只是“AI 能回答”，不用它也行。这个项目真正适合的是“AI 在一个持久 inbox 里回答”。
+- `Tencent mode`
+  接入真实 `SDKAppID`、`UserID`、`UserSig`，用 Tencent RTC Chat SDK 做真实交付层。
 
-## 这个项目展示什么
+- `Agent route starter`
+  内置一个兼容 OpenAI 接口的服务端 route，你可以直接换成自己的 provider 或 agent backend。
 
-- 不是普通 prompt box，而是 inbox 风格的 agent UI
-- 先用 `mock mode` 降低体验门槛
-- 再用 `Tencent mode` 演示真实的 Tencent RTC Chat SDK 接入路径
-- 支持真实 `SDKAppID` / `UserID` / `UserSig` 登录流程
+## 一个很具体的场景
 
-## 具体场景
+假设你在做一个电商 AI 客服助手。
 
-假设你在做一个电商场景里的 AI 客服助手。
+1. 用户问：`为什么这个订单延迟了？顺便帮我草拟一段回复客户的话。`
+2. 你的后端 agent 去查订单、物流和知识库。
+3. 这个过程可能要 30 到 90 秒。
+4. 结果应该回到同一个会话线程里，而不是只存在于某个页面局部状态里。
 
-1. 用户提问：`为什么这个订单延迟了？顺便帮我草拟一段回复客户的话。`
-2. 你的后端 agent 去查订单、物流和知识库，这可能要 30 到 90 秒。
-3. 用户这时离开了页面。
-4. 结果回来后，仍然会落进一个真实会话线程里，带着历史消息、未读状态和后续追问能力。
+这就是这个项目最适合解决的问题。
 
-如果没有这个项目，你通常得自己再补一层“结果怎么回到用户面前”的交付体验。有了这个项目，你可以把重点放在 agent 后端，把持久会话和 inbox 层交给 Tencent RTC Chat SDK。
+## 什么时候其实不需要 Tencent RTC Chat SDK？
+
+如果你只需要：
+
+- 一个简单的 AI 聊天页
+- 一个 Web 应用
+- 一个当前会话
+- 把消息存在你自己的数据库里
+
+那不用 Tencent RTC Chat SDK 也完全可以。
+
+## 什么时候 Tencent RTC Chat SDK 开始有价值？
+
+当你想把 AI 产品做得更像“真实消息产品”时，它会更有意义：
+
+- 持久会话线程
+- 历史同步
+- 未读状态
+- 更好的再次访问体验
+- 更清晰的多端连续性路径
+- 后续接 bot relay、通知、人工接管更顺
+
+可以简单理解成：
+
+- 不用它：你做的是一个 AI 聊天页
+- 用了它：你更接近一个 AI 消息产品
 
 ## 快速开始
 
@@ -99,23 +122,23 @@ npm run dev
 
 不是，**可选**。
 
-当前项目的模型层有三种使用方式：
+这个 demo 有三种用法：
 
 1. **完全不配模型 Key**
-   也能跑，项目会使用本地 fallback 回复逻辑。
+   也能跑，会使用本地 seeded 数据和 fallback 回复。
 
-2. **使用任何兼容 OpenAI API 的大模型服务**
-   当前 [src/app/api/agent/route.ts](./src/app/api/agent/route.ts) 走的是 OpenAI-compatible Chat Completions 接口。
-   只要你的模型供应商兼容这套接口，就可以配置：
+2. **接任何兼容 OpenAI API 的模型服务**
+   当前 [src/app/api/agent/route.ts](./src/app/api/agent/route.ts) 使用的是 OpenAI-compatible Chat Completions 接口。
+   如果你的模型服务兼容这套接口，就配置：
 
    - `OPENAI_API_KEY`
    - `OPENAI_BASE_URL`
    - `OPENAI_MODEL`
 
-3. **使用不兼容 OpenAI API 的模型服务**
-   直接把 [src/app/api/agent/route.ts](./src/app/api/agent/route.ts) 替换成对应厂商 SDK / API 的调用逻辑即可。
+3. **接其他不兼容 OpenAI API 的模型服务**
+   直接把 [src/app/api/agent/route.ts](./src/app/api/agent/route.ts) 换成对应厂商的 SDK 或 API 调用即可。
 
-所以变量名虽然叫 `OPENAI_API_KEY`，但 **并不代表只能接 OpenAI**。
+所以虽然变量名叫 `OPENAI_API_KEY`，但并不代表只能接 OpenAI。
 
 ## 环境变量
 
@@ -148,4 +171,13 @@ TIM_BOT_NICK=Tencent RTC Chat Agent
 
 不要把 `TIM_SDK_SECRET_KEY` 放到前端。
 
-当前仓库内置的服务端签名路由只是为了降低 Demo 集成门槛。正式环境里，应该把 `UserSig` 生成逻辑放到你自己的服务端鉴权体系之后。
+当前仓库内置的服务端签名路由只是为了降低 demo 集成门槛。正式环境里，应该把 `UserSig` 生成逻辑放到你自己的服务端鉴权体系之后。
+
+## Scripts
+
+```bash
+npm run dev
+npm run lint
+npm run build
+npm run start
+```

@@ -827,21 +827,18 @@ export function AgentChatUi() {
                 Async Agent Inbox for Next.js
               </div>
               <h1 className="max-w-4xl font-[family-name:var(--font-space-grotesk)] text-4xl font-semibold leading-[1.03] tracking-tight text-slate-950 sm:text-5xl xl:text-6xl">
-                Ship an async agent inbox with real delivery, thread history, and
-                follow-up built in.
+                Build an inbox for AI agents that do not finish instantly.
               </h1>
               <p className="mt-5 max-w-3xl text-base leading-7 text-slate-600 sm:text-lg">
-                Use this starter when your AI product is more than a prompt box. It is
-                designed for agents that take time to work and still need to deliver
-                results after the user leaves the page. Bring your own LLM or agent
-                backend. Tencent RTC Chat SDK provides the durable layer, and the
-                official free edition page positions it as 1,000 MAU free forever
-                with Push support.
+                This starter is for AI products that need real conversation threads,
+                not just a prompt box. Bring your own LLM or agent backend. Tencent
+                RTC Chat SDK provides the delivery layer for history, unread state,
+                and revisit-friendly messaging, with an official free edition path.
               </p>
               <p className="mt-3 max-w-3xl text-sm leading-6 text-slate-500 sm:text-base">
                 If you only need a simple AI chat page, you can build it without
-                Tencent RTC Chat SDK. Use this project when you want real threads,
-                history, unread state, and a messaging-style inbox experience.
+                Tencent RTC Chat SDK. Use this project when you want an AI inbox that
+                feels closer to a real messaging product.
               </p>
               <div className="mt-6 flex flex-wrap gap-3">
                 <a

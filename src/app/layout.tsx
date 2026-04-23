@@ -16,7 +16,7 @@ const ibmPlexMono = IBM_Plex_Mono({
 export const metadata: Metadata = {
   title: "Async Agent Inbox for Next.js | Tencent RTC Chat SDK Demo",
   description:
-    "Open-source async agent inbox for Next.js. Built for long-running AI tasks with real delivery, history, unread state, and Tencent RTC Chat SDK integration.",
+    "Open-source Next.js starter for AI products that need real conversation threads, history, unread state, and Tencent RTC Chat SDK integration.",
   keywords: [
     "async agent inbox",
     "agent inbox",
