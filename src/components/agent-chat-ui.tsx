@@ -824,18 +824,19 @@ export function AgentChatUi() {
             <div className="max-w-3xl">
               <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-emerald-200 bg-emerald-50 px-3 py-1 text-xs font-semibold uppercase tracking-[0.24em] text-emerald-800">
                 <Sparkles className="h-3.5 w-3.5" />
-                Agent Chat UI for Tencent RTC Chat SDK
+                AI Agent Chat UI for Next.js
               </div>
               <h1 className="max-w-4xl font-[family-name:var(--font-space-grotesk)] text-4xl font-semibold leading-[1.03] tracking-tight text-slate-950 sm:text-5xl xl:text-6xl">
-                Build the agent chat UI people actually want to star, then connect it
-                to Tencent RTC Chat SDK when you need real delivery.
+                Build an agent inbox people actually want to star, then connect it to
+                Tencent RTC Chat SDK when you need real delivery.
               </h1>
               <p className="mt-5 max-w-3xl text-base leading-7 text-slate-600 sm:text-lg">
                 This project is designed around what the hottest GitHub agent UIs do
                 well right now: sharp promise, fast bootstrap, strong async delivery,
-                and a UI that feels like a product instead of a sample app. The twist
-                is that the durable layer is Tencent RTC Chat SDK. The official free
-                edition page positions it as 1,000 MAU free forever with Push support.
+                and a UI that feels like a product instead of a sample app. Use it as
+                an AI agent chat UI, agent inbox, or Next.js chat starter. The durable
+                layer is Tencent RTC Chat SDK, and the official free edition page
+                positions it as 1,000 MAU free forever with Push support.
               </p>
               <div className="mt-6 flex flex-wrap gap-3">
                 <a

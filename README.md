@@ -2,18 +2,25 @@
 
 [English](./README.md) | [简体中文](./README.zh-CN.md) | [日本語](./README.ja.md) | [한국어](./README.ko.md)
 
-Open-source `agent-chat-ui` built with **Tencent RTC Chat SDK**.
+[![Next.js](https://img.shields.io/badge/Next.js-16-black)](https://nextjs.org/)
+[![Tencent RTC Chat SDK](https://img.shields.io/badge/Tencent%20RTC%20Chat%20SDK-Integrated-0ea56b)](https://trtc.io/free-chat-api)
+[![Free Forever](https://img.shields.io/badge/Free%20Edition-1%2C000%20MAU%20Free%20Forever-1f6feb)](https://trtc.io/free-chat-api)
+[![OpenAI Compatible](https://img.shields.io/badge/Model%20Layer-OpenAI%20Compatible-7c3aed)](#is-openai_api_key-required)
 
-It ships with two paths:
+Open-source **AI agent chat UI** and **agent inbox starter** for **Next.js**, built to connect with **Tencent RTC Chat SDK** when you need real message delivery, history, unread state, and bot relay.
 
-- `Mock mode` for instant local demos
-- `Tencent mode` for real `SDKAppID` + `UserSig` login, live conversation history, and bot relay
+This repo is designed to feel like the GitHub projects people actually star:
 
-If you want a GitHub-friendly agent inbox demo with a **free-forever path** to real chat infrastructure, this repo is designed for that.
+- a real UI, not a blank sample page
+- a 3-minute `mock mode` path with no cloud setup
+- a deeper `Tencent mode` path with real `SDKAppID` + `UserSig`
+- a **free-forever path** into production chat infrastructure
 
 According to the official [Tencent RTC Chat free edition page](https://trtc.io/free-chat-api), Tencent RTC Chat SDK & API is positioned as **1,000 MAU free forever**, with full features and built-in Push support.
 
-## What This Project Demonstrates
+![Agent Chat UI screenshot](./public/screenshots/agent-chat-ui-home.png)
+
+## What You Get In 5 Minutes
 
 - An inbox-style agent UI instead of a plain prompt box
 - A fast first-run experience inspired by popular GitHub chat UI projects
@@ -42,6 +49,8 @@ npm run dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000).
+
+If port `3000` is already in use, Next.js will automatically print the new local URL in the terminal.
 
 You can use the project immediately in `mock mode` with **no Tencent setup** and **no model API key**.
 
@@ -76,6 +85,13 @@ This demo works in three ways:
    If your provider is not OpenAI-compatible, replace the logic in [src/app/api/agent/route.ts](./src/app/api/agent/route.ts) with that provider's SDK or API client.
 
 So the env var name stays `OPENAI_API_KEY` for compatibility with the current server implementation, but **you are not locked to OpenAI**.
+
+## Why Tencent RTC Chat SDK For Agent Products?
+
+- Agents are often asynchronous, so durable message delivery matters more than a pretty prompt box
+- Builders need real identity, history, unread state, and follow-up instead of a one-shot demo
+- `mock mode` makes the repo easy to star, while `Tencent mode` makes it easy to keep
+- The official free edition gives a low-friction path from GitHub demo to a real app
 
 ## Environment Variables
 

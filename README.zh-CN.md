@@ -2,7 +2,11 @@
 
 [English](./README.md) | [简体中文](./README.zh-CN.md) | [日本語](./README.ja.md) | [한국어](./README.ko.md)
 
-一个基于 **Tencent RTC Chat SDK** 构建的开源 `agent-chat-ui`。
+[![Next.js](https://img.shields.io/badge/Next.js-16-black)](https://nextjs.org/)
+[![Tencent RTC Chat SDK](https://img.shields.io/badge/Tencent%20RTC%20Chat%20SDK-Integrated-0ea56b)](https://trtc.io/free-chat-api)
+[![Free Forever](https://img.shields.io/badge/Free%20Edition-1%2C000%20MAU%20Free%20Forever-1f6feb)](https://trtc.io/free-chat-api)
+
+一个面向 **Next.js** 的开源 **AI agent chat UI / agent inbox starter**，在需要真实消息投递、历史消息、未读状态和 bot relay 时，可以直接接入 **Tencent RTC Chat SDK**。
 
 它同时提供两条路径：
 
@@ -12,6 +16,8 @@
 如果你想要一个适合放在 GitHub 上、又能自然导向真实聊天基础设施的 agent inbox demo，这个项目就是按这个目标设计的。
 
 根据官方 [Tencent RTC Chat 免费版页面](https://trtc.io/free-chat-api)，Tencent RTC Chat SDK & API 主打 **1,000 MAU 永久免费**，并包含完整功能与 Push 能力。
+
+![Agent Chat UI 截图](./public/screenshots/agent-chat-ui-home.png)
 
 ## 这个项目展示什么
 
@@ -29,6 +35,8 @@ npm run dev
 ```
 
 打开 [http://localhost:3000](http://localhost:3000)。
+
+如果 `3000` 端口被占用，Next.js 会在终端里打印新的本地访问地址。
 
 即使不配置 Tencent，也可以先在 `mock mode` 下直接运行。
 

@@ -2,7 +2,11 @@
 
 [English](./README.md) | [简体中文](./README.zh-CN.md) | [日本語](./README.ja.md) | [한국어](./README.ko.md)
 
-**Tencent RTC Chat SDK** を使って構築したオープンソースの `agent-chat-ui` です。
+[![Next.js](https://img.shields.io/badge/Next.js-16-black)](https://nextjs.org/)
+[![Tencent RTC Chat SDK](https://img.shields.io/badge/Tencent%20RTC%20Chat%20SDK-Integrated-0ea56b)](https://trtc.io/free-chat-api)
+[![Free Forever](https://img.shields.io/badge/Free%20Edition-1%2C000%20MAU%20Free%20Forever-1f6feb)](https://trtc.io/free-chat-api)
+
+**Next.js 向けのオープンソース AI agent chat UI / agent inbox starter** です。実際の配信、履歴、未読、bot relay が必要になったら **Tencent RTC Chat SDK** に接続できます。
 
 このリポジトリには 2 つのモードがあります。
 
@@ -12,6 +16,8 @@
 GitHub で見つけやすく、しかも実運用のチャット基盤へ自然につながる agent inbox デモとして設計しています。
 
 公式の [Tencent RTC Chat 無料版ページ](https://trtc.io/free-chat-api) では、Tencent RTC Chat SDK & API は **1,000 MAU まで永久無料**、フル機能、Push 対応として案内されています。
+
+![Agent Chat UI screenshot](./public/screenshots/agent-chat-ui-home.png)
 
 ## このプロジェクトで分かること
 
@@ -29,6 +35,8 @@ npm run dev
 ```
 
 [http://localhost:3000](http://localhost:3000) を開いてください。
+
+もし `3000` が使用中なら、Next.js が別のローカル URL をターミナルに表示します。
 
 Tencent 側の設定がなくても、まずは `mock mode` で動かせます。
 
