@@ -14,16 +14,16 @@ const ibmPlexMono = IBM_Plex_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Agent Chat UI | Next.js AI Agent Inbox with Tencent RTC Chat SDK",
+  title: "Async Agent Inbox for Next.js | Tencent RTC Chat SDK Demo",
   description:
-    "Open-source AI agent chat UI for Next.js built with Tencent RTC Chat SDK. Mock mode, real chat history, bot relay, and a free-forever path to production.",
+    "Open-source async agent inbox for Next.js. Built for long-running AI tasks with real delivery, history, unread state, and Tencent RTC Chat SDK integration.",
   keywords: [
-    "agent chat ui",
-    "ai chat ui",
+    "async agent inbox",
+    "agent inbox",
     "Tencent RTC Chat SDK",
-    "free chat api",
-    "Next.js chat example",
+    "persistent chat",
     "AI inbox",
+    "Next.js agent starter",
     "chat sdk",
   ],
 };

@@ -801,13 +801,13 @@ export function AgentChatUi() {
   const heroStats = [
     {
       icon: Orbit,
-      label: "Inbox-first UX",
-      value: "Async AI delivery > prompt box demos",
+      label: "Async-first UX",
+      value: "Built for agents that finish later, not just prompt-response demos",
     },
     {
       icon: RadioTower,
-      label: "Tencent RTC Chat SDK",
-      value: "Real login, history, unread state, and relay-ready bot channel",
+      label: "Real delivery layer",
+      value: "History, unread state, revisit flow, and relay-ready bot messaging",
     },
     {
       icon: BellRing,
@@ -824,19 +824,18 @@ export function AgentChatUi() {
             <div className="max-w-3xl">
               <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-emerald-200 bg-emerald-50 px-3 py-1 text-xs font-semibold uppercase tracking-[0.24em] text-emerald-800">
                 <Sparkles className="h-3.5 w-3.5" />
-                AI Agent Chat UI for Next.js
+                Async Agent Inbox for Next.js
               </div>
               <h1 className="max-w-4xl font-[family-name:var(--font-space-grotesk)] text-4xl font-semibold leading-[1.03] tracking-tight text-slate-950 sm:text-5xl xl:text-6xl">
-                Build an agent inbox people actually want to star, then connect it to
-                Tencent RTC Chat SDK when you need real delivery.
+                Ship an async agent inbox with real delivery, thread history, and
+                follow-up built in.
               </h1>
               <p className="mt-5 max-w-3xl text-base leading-7 text-slate-600 sm:text-lg">
-                This project is designed around what the hottest GitHub agent UIs do
-                well right now: sharp promise, fast bootstrap, strong async delivery,
-                and a UI that feels like a product instead of a sample app. Use it as
-                an AI agent chat UI, agent inbox, or Next.js chat starter. The durable
-                layer is Tencent RTC Chat SDK, and the official free edition page
-                positions it as 1,000 MAU free forever with Push support.
+                Use this starter when your AI product is more than a prompt box. It is
+                designed for agents that take time to work and still need to deliver
+                results after the user leaves the page. Tencent RTC Chat SDK provides
+                the durable layer, and the official free edition page positions it as
+                1,000 MAU free forever with Push support.
               </p>
               <div className="mt-6 flex flex-wrap gap-3">
                 <a

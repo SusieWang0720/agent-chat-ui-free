@@ -7,7 +7,11 @@
 [![Free Forever](https://img.shields.io/badge/Free%20Edition-1%2C000%20MAU%20Free%20Forever-1f6feb)](https://trtc.io/free-chat-api)
 [![OpenAI Compatible](https://img.shields.io/badge/Model%20Layer-OpenAI%20Compatible-7c3aed)](#is-openai_api_key-required)
 
-Open-source **AI agent chat UI** and **agent inbox starter** for **Next.js**, built to connect with **Tencent RTC Chat SDK** when you need real message delivery, history, unread state, and bot relay.
+**The open-source async agent inbox for Next.js.**
+
+Use this repo when your AI product is not just a prompt box. It is for agents that take time to work, need persistent threads, and should still deliver results after the user leaves the page.
+
+Tencent RTC Chat SDK is the delivery layer: real message history, unread state, follow-up, and bot relay.
 
 This repo is designed to feel like the GitHub projects people actually star:
 
@@ -19,6 +23,18 @@ This repo is designed to feel like the GitHub projects people actually star:
 According to the official [Tencent RTC Chat free edition page](https://trtc.io/free-chat-api), Tencent RTC Chat SDK & API is positioned as **1,000 MAU free forever**, with full features and built-in Push support.
 
 ![Agent Chat UI screenshot](./public/screenshots/agent-chat-ui-home.png)
+
+## What This Repo Is
+
+- An inbox-style frontend for long-running AI tasks
+- A Next.js starter for products that need async delivery, thread history, and revisit-friendly UX
+- A Tencent RTC Chat SDK integration demo once you switch from `mock mode` to `Tencent mode`
+
+## What This Repo Is Not
+
+- Not a generic multi-model chat playground
+- Not an agent framework like LangGraph or OpenAI Agents
+- Not only a Tencent SDK sample with no product UX
 
 ## What You Get In 5 Minutes
 
@@ -39,6 +55,12 @@ Real products need a stronger loop:
 4. The result should still land in a real conversation thread later
 
 That is where Tencent RTC Chat SDK fits: identity, conversation history, unread state, message delivery, and follow-up.
+
+## Best Fit
+
+- AI copilots that finish work asynchronously
+- Support or operations agents that need real threads instead of temporary chat state
+- Agent products that need a cleaner path from local demo to production messaging
 
 ## Quickstart
 

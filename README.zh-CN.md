@@ -6,7 +6,11 @@
 [![Tencent RTC Chat SDK](https://img.shields.io/badge/Tencent%20RTC%20Chat%20SDK-Integrated-0ea56b)](https://trtc.io/free-chat-api)
 [![Free Forever](https://img.shields.io/badge/Free%20Edition-1%2C000%20MAU%20Free%20Forever-1f6feb)](https://trtc.io/free-chat-api)
 
-一个面向 **Next.js** 的开源 **AI agent chat UI / agent inbox starter**，在需要真实消息投递、历史消息、未读状态和 bot relay 时，可以直接接入 **Tencent RTC Chat SDK**。
+**一个面向 Next.js 的开源异步 agent inbox。**
+
+这个项目不是普通 prompt box，而是给“需要花时间执行任务的 AI agent”准备的前端。用户离开页面后，结果仍然应该回到真实会话线程里。
+
+**Tencent RTC Chat SDK** 在这里扮演的是交付层：真实历史消息、未读状态、后续跟进和 bot relay。
 
 它同时提供两条路径：
 
@@ -18,6 +22,18 @@
 根据官方 [Tencent RTC Chat 免费版页面](https://trtc.io/free-chat-api)，Tencent RTC Chat SDK & API 主打 **1,000 MAU 永久免费**，并包含完整功能与 Push 能力。
 
 ![Agent Chat UI 截图](./public/screenshots/agent-chat-ui-home.png)
+
+## 这个项目是什么
+
+- 一个面向长任务 AI 产品的 inbox 风格前端
+- 一个支持异步投递、线程历史、再次访问体验的 Next.js starter
+- 当你从 `mock mode` 切到 `Tencent mode` 后，它也是一个 Tencent RTC Chat SDK 集成 demo
+
+## 这个项目不是什么
+
+- 不是通用多模型聊天 playground
+- 不是 LangGraph / OpenAI Agents 这类 agent framework
+- 也不是只有 SDK 接入、没有产品体验的示例页
 
 ## 这个项目展示什么
 
